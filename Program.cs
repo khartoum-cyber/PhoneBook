@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace PhoneBook
 {
@@ -14,7 +15,6 @@ namespace PhoneBook
             Console.WriteLine("4 - Search contacts.");
             Console.WriteLine("0 - Exit app.");
 
-
             var userInput = Console.ReadLine();
 
             var phoneBook = new PhoneBook();
@@ -29,8 +29,18 @@ namespace PhoneBook
                         Console.WriteLine("Insert name");
                         var name = Console.ReadLine();
 
-                        Contact newContact = new Contact(name, number);
-                        phoneBook.AddContact(newContact);
+                        //bool isMatch = Regex.IsMatch(name, @"/(.*[a-z]){3}/i");
+
+                        if (name.Length >= 3 && Regex.IsMatch(number, @"^\d{9}$"))
+                        {
+                            Contact newContact = new Contact(name, number);
+                            phoneBook.AddContact(newContact);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Oops! Name is shorter than 3 characters or number is shorter than 9 digits. Try again.");
+                        }
+
                         break;
 
                     case "2":
