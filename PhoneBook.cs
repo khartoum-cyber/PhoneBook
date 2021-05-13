@@ -7,7 +7,7 @@ namespace PhoneBook
 {
     public class PhoneBook
     {
-        public List <Contact> Contacts { get; set; }
+        public List<Contact> Contacts { get; set; } = new List<Contact>();
 
         private void DisplayContactDetails(Contact contact)
         {
@@ -39,7 +39,7 @@ namespace PhoneBook
                 DisplayContactDetails(contact);
             }
         }
-        public void DispalyAllContacts()
+        public void DisplayAllContacts()
         {
             DisplayContactsDetails(Contacts);
         }
